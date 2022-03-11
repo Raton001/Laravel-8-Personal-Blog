@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserUpdate;
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
@@ -17,12 +18,19 @@ class UserController extends Controller
     }
     
     public function dashboard(){
-     
-       return view('user.dashboard');
+      
+        $post=Post::where('user_id',Auth::id())->pluck('id')->toArray();
+        $allcomment =Comment::whereIn('post_id', $post)->get();
+
+        return view('user.dashboard', compact('allcomment'));
     }
 
     public function comments(){
-        return view('user.comments');
+
+        $post=Post::where('user_id',Auth::id())->pluck('id')->toArray();
+        $comments =Comment::whereIn('post_id', $post)->get();
+        
+        return view('user.comments', compact('comments'));
 
     }
     public function delete($id){

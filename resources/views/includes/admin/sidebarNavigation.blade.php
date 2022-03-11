@@ -63,8 +63,8 @@
                            <i class="icon icon-user"></i> User
                         </a>
                     </li>
-
+                @endif 
                 </ul>
             </nav>
         </div>
-     @endif    
+       

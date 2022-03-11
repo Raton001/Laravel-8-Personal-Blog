@@ -57,7 +57,7 @@
                     <a href="#" class="dropdown-item">
                         <i class="fa fa-wrench"></i> Settings
                     </a> --}}
-                <form id="logout-form" action="{{route('logout')}}"  method="POST">@csrf</form>
+                 <form id="logout-form" action="{{route('logout')}}"  method="POST">@csrf</form>
                     <a href="#" onclick="document.getElementById('logout-form').submit();" class="dropdown-item">
                         <i class="fa fa-lock"></i> Logout
                     </a>
